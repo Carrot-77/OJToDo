@@ -15,26 +15,31 @@
 using namespace std;
 
 #define maxn 240
-struct node {
-	int num;
-	struct node *next
-};
 
-bool cmp (int x, int y) {
-	return x > y;
+int n, len;
+string s;
+
+void print() {
+	int flag = 1;
+	for (int i = 0; i < len - n; i++) {
+		if (s[i] != '0') flag = 0;
+		if (!flag) cout << s[i];
+	}
+	cout << endl;
 }
 
 int main() {
-	string n;
-	int s, a[maxn + 5];
-	cin >> n >> s;
-	int nlen = n.length();
-	for (int i = 0; i < nlen; i++) {
-		a[i] = n[i] - '0';
+	cin >> s >> n;
+	len = s.length();
+	for (int i = 0; i < n; i++) {
+		int x = len - 1;
+		for (int j = 0; i < n; j++) {
+			if (s[j] > s[j + 1]) {
+				x = j;
+				break;
+			}
+		}
+		s.replace(x, 1, "");
 	}
-	sort (a, a + nlen, cmp);
-	for (int i = 0; i < nlen; i++) {
-
-	}
+	print();
 }
-
